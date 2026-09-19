@@ -1,0 +1,11 @@
+.env
+.exintcache
+
+/dist
+/build
+
+/node_modules
+/target
+
+/reports
+/screenshots
