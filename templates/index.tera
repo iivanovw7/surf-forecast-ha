@@ -23,9 +23,32 @@
     }
     .header {
       margin-bottom: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
     h1 { margin: 0; color: var(--accent); font-size: 2rem; }
     p.subtitle { color: var(--subtext); margin-top: 0.5rem; }
+    .reload-btn {
+      background-color: var(--card-bg);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background-color 0.2s, border-color 0.2s;
+    }
+    .reload-btn:hover {
+      background-color: var(--border);
+      border-color: var(--accent);
+    }
     .card {
       background: var(--card-bg);
       border-radius: 12px;
@@ -76,8 +99,13 @@
     </head>
     <body>
         <div class="header">
-            <h1>🌊 {{ page_title }}</h1>
-            <p class="subtitle">Configured directly via Home Assistant Add-on Settings</p>
+            <div>
+                <h1>🌊 {{ page_title }}</h1>
+                <p class="subtitle">Configured directly via Home Assistant Add-on Settings</p>
+            </div>
+            <button class="reload-btn" onclick="window.location.reload();">
+                <span>🔄</span> Reload
+            </button>
         </div>
         <div class="card">
             <h2>Monitored Spots ({{ spots | length }})</h2>

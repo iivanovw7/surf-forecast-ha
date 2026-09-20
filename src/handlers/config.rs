@@ -39,6 +39,19 @@ pub async fn load_options() -> AddonOptions {
     AddonOptions::default()
 }
 
-pub async fn get() -> Json<AddonOptions> {
-    Json(load_options().await)
+pub async fn get() -> impl axum::response::IntoResponse {
+    let mut headers = axum::http::HeaderMap::new();
+
+    headers.insert(
+        axum::http::header::CACHE_CONTROL,
+        axum::http::header::HeaderValue::from_static(
+            "no-store, no-cache, must-revalidate, max-age=0",
+        ),
+    );
+    headers.insert(
+        axum::http::header::PRAGMA,
+        axum::http::header::HeaderValue::from_static("no-cache"),
+    );
+
+    (headers, Json(load_options().await))
 }
