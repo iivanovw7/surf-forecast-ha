@@ -84,7 +84,7 @@
             <div class="spot-grid">
                 {% for spot in spots %}
                     <div class="spot-card">
-                        <div class="spot-name">{{ spot }}</div>
+                        <div class="spot-name">{{ spot.name }}</div>
                     </div>
                 {% else %}
                     <p>No spots configured in Home Assistant options.</p>
