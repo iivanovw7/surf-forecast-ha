@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page_title }}</title>
-  <style>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{ page_title }}</title>
+        <style>
     :root {
       --bg-color: #0f172a;
       --card-bg: #1e293b;
@@ -72,61 +72,24 @@
       color: #f87171;
       font-weight: bold;
     }
-  </style>
-</head>
-<body>
-
-  <div class="header">
-    <h1>🌊 {{ page_title }}</h1>
-    <p class="subtitle">Configured directly via Home Assistant Add-on Settings</p>
-  </div>
-
-  <!-- Monitored Spots Section -->
-  <div class="card">
-    <h2>Monitored Spots ({{ spots | length }})</h2>
-    <div class="spot-grid">
-      {% for spot in spots %}
-        <div class="spot-card">
-          <div class="spot-name">{{ spot }}</div>
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <h1>🌊 {{ page_title }}</h1>
+            <p class="subtitle">Configured directly via Home Assistant Add-on Settings</p>
         </div>
-      {% else %}
-        <p>No spots configured in Home Assistant options.</p>
-      {% endfor %}
-    </div>
-  </div>
-
-  <!-- Notification Parameters Section -->
-  <div class="card">
-    <h2>Notification Parameters</h2>
-    <ul class="param-list">
-      <li>
-        <span style="color: var(--subtext);">Alert Status</span>
-        {% if notifications.enable %}
-          <span class="status-enabled">Active</span>
-        {% else %}
-          <span class="status-disabled">Disabled</span>
-        {% endif %}
-      </li>
-      <li>
-        <span style="color: var(--subtext);">Min Wave Height</span>
-        <span><strong>{{ notifications.min_wave_height }}</strong> meters</span>
-      </li>
-      <li>
-        <span style="color: var(--subtext);">Max Wind Speed</span>
-        <span><strong>{{ notifications.max_wind_kts }}</strong> knots</span>
-      </li>
-      <li>
-        <span style="color: var(--subtext);">Webhook URL</span>
-        <span>
-          {% if notifications.webhook_url %}
-            <code>{{ notifications.webhook_url }}</code>
-          {% else %}
-            <em style="color: var(--subtext);">Not Configured</em>
-          {% endif %}
-        </span>
-      </li>
-    </ul>
-  </div>
-
-</body>
+        <div class="card">
+            <h2>Monitored Spots ({{ spots | length }})</h2>
+            <div class="spot-grid">
+                {% for spot in spots %}
+                    <div class="spot-card">
+                        <div class="spot-name">{{ spot }}</div>
+                    </div>
+                {% else %}
+                    <p>No spots configured in Home Assistant options.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </body>
 </html>

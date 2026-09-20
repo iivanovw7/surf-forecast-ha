@@ -1,0 +1,79 @@
+name: "Surf Forecast"
+slug: "surf_forecast_addon"
+description: "Surf forecast and metrics for Home Assistant."
+version: "1.0.0"
+arch:
+  - amd64
+  - aarch64
+init: false
+startup: application
+boot: auto
+ports:
+  8080/tcp: null
+webui: "http://[HOST]:[PORT:8080]"
+ingress: true
+ingress_port: 8080
+panel_icon: "mdi:waves"
+panel_title: "Surf Forecast"
+
+options:
+  spots:
+    - id: "sao_joao"
+      name: "São João da Caparica"
+      latitude: 38.6517
+      longitude: -9.2431
+    - id: "cds"
+      name: "CDS (Praia do CDS)"
+      latitude: 38.6433
+      longitude: -9.2372
+    - id: "praia_nova"
+      name: "Praia Nova"
+      latitude: 38.6385
+      longitude: -9.2348
+    - id: "fonte_da_telha"
+      name: "Fonte da Telha"
+      latitude: 38.5684
+      longitude: -9.1947
+    - id: "carcavelos"
+      name: "Carcavelos"
+      latitude: 38.6792
+      longitude: -9.3353
+    - id: "sao_pedro"
+      name: "São Pedro do Estoril"
+      latitude: 38.6946
+      longitude: -9.3705
+    - id: "guincho"
+      name: "Guincho"
+      latitude: 38.7327
+      longitude: -9.4731
+    - id: "praia_california"
+      name: "Praia da Califórnia"
+      latitude: 38.4431
+      longitude: -9.0963
+    - id: "ribeira_dilhas"
+      name: "Ribeira d'Ilhas"
+      latitude: 38.9877
+      longitude: -9.4189
+    - id: "coxos"
+      name: "Coxos"
+      latitude: 39.0028
+      longitude: -9.4219
+    - id: "supertubos"
+      name: "Supertubos"
+      latitude: 39.3444
+      longitude: -9.3622
+    - id: "baleal"
+      name: "Baleal"
+      latitude: 39.3739
+      longitude: -9.3339
+    - id: "castelejo"
+      name: "Praia do Castelejo"
+      latitude: 37.0998
+      longitude: -8.9482
+
+schema:
+  spots:
+    - id: str
+      name: str
+      latitude: float(-90.0,90.0)
+      longitude: float(-180.0,180.0)

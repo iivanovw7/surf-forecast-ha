@@ -1,12 +1,15 @@
 [package]
 name = "surf-forecast-ha"
 version = "0.1.0"
-edition = "2024"
+edition = "2021"
 
 [dependencies]
+anyhow = "1.0.104"
 axum = "0.8.9"
 lazy_static = "1.5.0"
 serde = { version = "1.0.229", features = ["derive"] }
 serde_json = "1.0.151"
 tera = { version = "2.4.0", features = ["glob_fs"] }
 tokio = { version = "1.53.1", features = ["full"] }
+tracing = "0.1.44"
+tracing-subscriber = { version = "0.3.23", features = ["env-filter"] }
