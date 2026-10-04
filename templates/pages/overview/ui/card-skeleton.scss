@@ -1,0 +1,90 @@
+@use "@styles/abstracts" as *;
+
+.forecast-card--skeleton {
+	position: relative;
+	overflow: hidden;
+}
+
+.skeleton {
+	@include border-radius(3);
+
+	position: relative;
+	display: block;
+	overflow: hidden;
+	background: rgba(255, 255, 255, 8%);
+
+	&::after {
+		@include position;
+
+		content: "";
+		background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 10%) 50%, transparent 100%);
+		transform: translateX(-100%);
+		animation: forecast-skeleton-shimmer 1.5s infinite;
+	}
+
+	&--badge {
+		@include sizer(rem(48px), rem(20px));
+	}
+
+	&--tag {
+		@include sizer(rem(55px), rem(14px));
+	}
+
+	&--wave-icon {
+		@include sizer(rem(30px));
+		@include border-radius(50%);
+	}
+
+	&--wave-value {
+		@include sizer(rem(42px), rem(22px));
+	}
+
+	&--arrow {
+		@include sizer(rem(20px));
+		@include border-radius(50%);
+	}
+
+	&--value {
+		@include sizer(rem(48px), rem(15px));
+	}
+
+	&--small {
+		@include sizer(rem(32px), rem(11px));
+	}
+
+	&--temp {
+		@include sizer(rem(38px), rem(18px));
+	}
+
+	&--wind-icon {
+		@include sizer(rem(28px));
+		@include border-radius(50%);
+	}
+
+	&--wind-value {
+		@include sizer(rem(80px), rem(26px));
+	}
+
+	&--weather-icon {
+		@include sizer(rem(24px));
+		@include border-radius(50%);
+	}
+
+	&--air-temp {
+		@include sizer(rem(36px), rem(16px));
+	}
+}
+
+@keyframes forecast-skeleton-shimmer {
+	100% {
+		transform: translateX(100%);
+	}
+}
+
+.surf-row--loaded {
+	transition: $transition-opacity;
+}
+
+.surf-row--error {
+	opacity: 75%;
+}

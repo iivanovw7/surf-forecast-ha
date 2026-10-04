@@ -7,5 +7,12 @@
 /node_modules
 /target
 
+/assets/css/manifest.json
+/assets/css/main.*.js
+/assets/css/main.*.css
+
+/e2e/reports
+/e2e/screenshots
+
 /reports
 /screenshots

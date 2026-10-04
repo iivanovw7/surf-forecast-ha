@@ -3,13 +3,13 @@ slug: "surf_forecast_addon"
 description: "Surf forecast and metrics for Home Assistant."
 version: "1.0.2"
 arch:
-  - amd64
-  - aarch64
+    - amd64
+    - aarch64
 init: false
 startup: application
 boot: auto
 ports:
-  8080/tcp: null
+    8080/tcp: null
 webui: "http://[HOST]:[PORT:8080]"
 ingress: true
 ingress_port: 8080
@@ -17,63 +17,91 @@ panel_icon: "mdi:waves"
 panel_title: "Surf Forecast"
 
 options:
-  spots:
-    - id: "sao_joao"
-      name: "São João da Caparica"
-      latitude: 38.6517
-      longitude: -9.2431
-    - id: "cds"
-      name: "CDS (Praia do CDS)"
-      latitude: 38.6433
-      longitude: -9.2372
-    - id: "praia_nova"
-      name: "Praia Nova"
-      latitude: 38.6385
-      longitude: -9.2348
-    - id: "fonte_da_telha"
-      name: "Fonte da Telha"
-      latitude: 38.5684
-      longitude: -9.1947
-    - id: "carcavelos"
-      name: "Carcavelos"
-      latitude: 38.6792
-      longitude: -9.3353
-    - id: "sao_pedro"
-      name: "São Pedro do Estoril"
-      latitude: 38.6946
-      longitude: -9.3705
-    - id: "guincho"
-      name: "Guincho"
-      latitude: 38.7327
-      longitude: -9.4731
-    - id: "praia_california"
-      name: "Praia da Califórnia"
-      latitude: 38.4431
-      longitude: -9.0963
-    - id: "ribeira_dilhas"
-      name: "Ribeira d'Ilhas"
-      latitude: 38.9877
-      longitude: -9.4189
-    - id: "coxos"
-      name: "Coxos"
-      latitude: 39.0028
-      longitude: -9.4219
-    - id: "supertubos"
-      name: "Supertubos"
-      latitude: 39.3444
-      longitude: -9.3622
-    - id: "baleal"
-      name: "Baleal"
-      latitude: 39.3739
-      longitude: -9.3339
-    - id: "castelejo"
-      name: "Praia do Castelejo"
-      latitude: 37.0998
-      longitude: -8.9482
-
+    title: "Surf spots configuration"
+    model: "meteofrance_wave"
+    spots:
+        - id: "sao_joao"
+          name: "São João da Caparica"
+          latitude: 38.6517
+          longitude: -9.2431
+          cover: "assets/jpg/sao-joao.jpg"
+          facing: 270.0
+          beach:
+              swell:
+                  preferred_min: 220.0
+                  preferred_max: 330.0
+              wind:
+                  offshore_min: 60.0
+                  offshore_max: 120.0
+          region: "Costa da Caparica, PT"
+        - id: "fonte_da_telha"
+          name: "Fonte da Telha"
+          latitude: 38.5684
+          longitude: -9.1947
+          cover: "assets/jpg/fonte.jpg"
+          facing: 255.0
+          beach:
+              swell:
+                  preferred_min: 220.0
+                  preferred_max: 330.0
+              wind:
+                  offshore_min: 50.0
+                  offshore_max: 110.0
+          region: "Almada, PT"
+        - id: "carcavelos"
+          name: "Carcavelos"
+          latitude: 38.6792
+          longitude: -9.3353
+          cover: "assets/jpg/carc.jpg"
+          facing: 150.0
+          region: "Carcavelos, PT"
+          beach:
+              swell:
+                  preferred_min: 200.0
+                  preferred_max: 290.0
+              wind:
+                  offshore_min: 330.0
+                  offshore_max: 40.0
+        - id: "sao_pedro"
+          name: "São Pedro do Estoril"
+          latitude: 38.6946
+          longitude: -9.3705
+          cover: "assets/jpg/sao-pedro.jpg"
+          facing: 165.0
+          region: "Estoril, PT"
+          beach:
+              swell:
+                  preferred_min: 200.0
+                  preferred_max: 280.0
+              wind:
+                  offshore_min: 330.0
+                  offshore_max: 30.0
+        - id: "guincho"
+          name: "Guincho"
+          latitude: 38.7327
+          longitude: -9.4731
+          cover: "assets/jpg/guincho.jpg"
+          facing: 280.0
+          region: "Sintra-Cascais, PT"
+          beach:
+              swell:
+                  preferred_min: 210.0
+                  preferred_max: 340.0
+              wind:
+                  offshore_min: 70.0
+                  offshore_max: 130.0
 schema:
-  spots:
-    - id: str
-      name: str
-      latitude: float(-90.0,90.0)
-      longitude: float(-180.0,180.0)
+    model: list(ecmwf_wam|ewam|meteofrance_wave)
+    spots:
+        - id: str
+          name: str
+          latitude: float(-90.0,90.0)
+          longitude: float(-180.0,180.0)
+          cover: str
+          facing: float
+          swell:
+              preferred_min: float
+              preferred_max: float
+          wind:
+              offshore_min: float
+              offshore_max: float

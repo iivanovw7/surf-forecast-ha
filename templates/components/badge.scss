@@ -1,0 +1,49 @@
+@use "@styles/abstracts" as *;
+
+.badge {
+	@include text-setting("xs");
+	@include px(2);
+	@include py(0);
+	@include border-radius(2);
+
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: $font-weight-bold;
+	line-height: rem(20px);
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	white-space: nowrap;
+
+	&--epic {
+		color: #fff;
+		background: #ef4444;
+	}
+
+	&--good {
+		color: #fff;
+		background: #10b981;
+	}
+
+	&--fair {
+		color: #fff;
+		background: #f59e0b;
+	}
+
+	&--poor {
+		color: #fff;
+		background: #991b1b;
+	}
+
+	&--no-data {
+		color: var(--content-muted);
+		background: var(--surface-tertiary);
+	}
+
+	&--pill {
+		@include border-radius(4);
+
+		padding-right: rem(10px);
+		padding-left: rem(10px);
+	}
+}

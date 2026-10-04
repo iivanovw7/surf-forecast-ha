@@ -1,0 +1,191 @@
+@use "@styles/abstracts" as *;
+
+.app-topbar {
+	@include vert-align-flex(center);
+	@include px(3);
+
+	position: sticky;
+	top: 0;
+	z-index: 100;
+	justify-content: space-between;
+	height: rem(64px);
+	background: var(--surface-sunken);
+	border-bottom: 1px solid var(--border-subtle);
+
+	@include media-mobile-only {
+		@include px(2);
+
+		flex-wrap: wrap;
+		gap: rem(10px);
+		height: auto;
+		padding-top: rem(10px);
+		padding-bottom: rem(10px);
+	}
+
+	&__left,
+	&__center,
+	&__right {
+		@include vert-align-flex(center);
+
+		gap: rem(16px);
+	}
+}
+
+.brand {
+	@include vert-align-flex(center);
+
+	gap: rem(12px);
+
+	&__icon {
+		@include sizer(rem(28px));
+
+		flex-shrink: 0;
+		color: var(--data-swell);
+	}
+
+	&__title {
+		@include text-setting("sm");
+
+		font-weight: $font-weight-extra-bold;
+		color: var(--content-primary);
+		letter-spacing: 0.08em;
+		white-space: nowrap;
+
+		@include media-mobile-only {
+			font-size: rem(11px);
+		}
+	}
+}
+
+.date-navigator {
+	@include vert-align-flex(center);
+	@include px(2);
+	@include py(1);
+	@include border-radius(4);
+
+	gap: rem(8px);
+	background: var(--surface-secondary);
+	border: 1px solid var(--border-subtle);
+
+	&__arrow {
+		@include vert-align-flex(center);
+		@include sizer(rem(22px));
+
+		padding: 0;
+		color: var(--content-secondary);
+		cursor: pointer;
+		background: transparent;
+		border: none;
+		transition: $transition-color;
+
+		&:hover {
+			color: var(--content-primary);
+		}
+
+		svg {
+			@include sizer(rem(16px));
+		}
+	}
+
+	&__label {
+		@include vert-align-flex(center);
+		@include text-setting("xs");
+
+		gap: rem(8px);
+		font-weight: $font-weight-bold;
+		color: var(--content-primary);
+	}
+
+	&__icon {
+		@include sizer(rem(14px));
+
+		color: var(--content-muted);
+	}
+}
+
+.search-box {
+	@include vert-align-flex(center);
+	@include px(2);
+	@include py(1);
+	@include border-radius(4);
+
+	gap: rem(8px);
+	width: rem(180px);
+	background: var(--surface-secondary);
+	border: 1px solid var(--border-default);
+	transition: $transition-border-color;
+
+	&:focus-within {
+		border-color: var(--data-swell);
+	}
+
+	&__icon {
+		@include sizer(rem(14px));
+
+		flex-shrink: 0;
+		color: var(--content-muted);
+	}
+
+	&__input {
+		@include text-setting("xs");
+
+		width: 100%;
+		color: var(--content-primary);
+		outline: none;
+		background: transparent;
+		border: none;
+
+		&::placeholder {
+			color: var(--content-muted);
+		}
+	}
+}
+
+.unit-toggle {
+	@include vert-align-flex(center);
+	@include border-radius(4);
+
+	padding: rem(2px);
+	background: var(--surface-secondary);
+	border: 1px solid var(--border-subtle);
+
+	&__btn {
+		@include text-setting("xs");
+		@include px(2);
+		@include py(1);
+		@include border-radius(3);
+
+		font-weight: $font-weight-bold;
+		color: var(--content-muted);
+		cursor: pointer;
+		background: transparent;
+		border: none;
+		transition: $transition-color, $transition-bg-color;
+
+		&--active {
+			color: var(--content-primary);
+			background: var(--surface-tertiary);
+		}
+	}
+}
+
+.icon-btn {
+	@include justify-align-flex(center, center);
+	@include sizer(rem(32px));
+	@include border-radius(4);
+
+	color: var(--content-secondary);
+	cursor: pointer;
+	background: var(--surface-secondary);
+	border: 1px solid var(--border-subtle);
+	transition: $transition-color, $transition-border-color;
+
+	&:hover {
+		color: var(--content-primary);
+		border-color: var(--border-default);
+	}
+
+	svg {
+		@include sizer(rem(16px));
+	}
+}

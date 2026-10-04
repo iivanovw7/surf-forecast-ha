@@ -1,0 +1,78 @@
+{
+	"name": "surf-forecast-ha",
+	"version": "1.0.0",
+	"description": "",
+	"type": "module",
+	"scripts": {
+		"dev": "pnpm dlx concurrently \"pnpm:dev:*\"",
+		"dev:server": "cargo watch -w src -w templates -w config.yaml -i \"templates/**/*.scss\" -x run",
+		"dev:css": "rspack --watch",
+		"build": "pnpm build:css && pnpm build:server",
+		"build:server": "cargo build --release",
+		"build:css": "rspack build",
+		"build:run": "cargo run",
+		"test": "pnpm run /^test:/",
+		"test:server": "cargo test",
+		"test:format:fmt": "cargo fmt -- --check",
+		"test:format:eslint": "eslint \"**/*.{js,jsx}\"",
+		"test:format:prettier": "prettier --write --ignore-unknown .",
+		"test:format:djlint": "djlint templates/**/*.html --reformat --format-js",
+		"test:format:stylelint": "stylelint \"styles/**/*.{css,scss}\"",
+		"prepare": "husky"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devEngines": {
+		"packageManager": {
+			"name": "pnpm",
+			"version": "^11.22.0",
+			"onFail": "download"
+		}
+	},
+	"config": {
+		"commitizen": {
+			"path": "./node_modules/cz-conventional-changelog"
+		}
+	},
+	"devDependencies": {
+		"@commitlint/cli": "21.2.3",
+		"@commitlint/config-conventional": "21.2.3",
+		"@eslint/js": "^10.0.1",
+		"@rspack/cli": "^2.2.6",
+		"@rspack/core": "^2.2.6",
+		"autoprefixer": "^10.6.1",
+		"clean-webpack-plugin": "4.0.0",
+		"eslint": "^10.12.0",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-plugin-import": "2.32.0",
+		"eslint-plugin-jsdoc": "65.0.2",
+		"eslint-plugin-n": "18.4.1",
+		"eslint-plugin-node-import": "1.2.0",
+		"eslint-plugin-perfectionist": "5.12.1",
+		"eslint-plugin-prefer-arrow": "1.2.3",
+		"eslint-plugin-prefer-let": "4.2.2",
+		"eslint-plugin-promise": "7.3.0",
+		"eslint-plugin-sonarjs": "4.2.2",
+		"eslint-plugin-unicorn": "77.0.0",
+		"global": "4.4.0",
+		"globals": "^17.13.0",
+		"husky": "9.1.7",
+		"postcss": "8.5.28",
+		"postcss-100vh-fix": "2.0.0",
+		"postcss-dark-theme-class": "2.0.0",
+		"postcss-loader": "8.2.1",
+		"postcss-preset-env": "11.5.3",
+		"prettier": "3.9.8",
+		"rspack-manifest-plugin": "5.2.2",
+		"sass": "1.105.0",
+		"sass-embedded": "1.105.0",
+		"sass-loader": "17.0.1",
+		"stylelint": "17.15.0",
+		"stylelint-config-recess-order": "7.8.0",
+		"stylelint-config-recommended-scss": "17.0.1",
+		"stylelint-config-sass-guidelines": "13.0.0",
+		"stylelint-order": "8.1.1",
+		"stylelint-scss": "7.3.0"
+	}
+}

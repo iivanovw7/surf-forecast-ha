@@ -1,0 +1,190 @@
+@use "@styles/abstracts" as *;
+
+.forecast-card {
+	@include p(2);
+	@include border-radius(4);
+	@include justify-align-flex(flex-start, flex-start);
+	@include sizer(rem(200px), rem(150px));
+
+	flex-direction: column;
+	gap: rem(8px);
+	background: var(--surface-secondary);
+	border: 1px solid var(--border-subtle);
+
+	&__header {
+		@include justify-align-flex(space-between, center);
+	}
+
+	&__tag {
+		@include text-setting("xs");
+
+		font-weight: $font-weight-bold;
+		color: var(--data-swell);
+		letter-spacing: 0.05em;
+	}
+
+	&__wave {
+		@include vert-align-flex(center);
+
+		gap: rem(8px);
+		padding: rem(2px) 0;
+	}
+
+	&__wave-icon {
+		@include sizer(rem(20px));
+
+		flex-shrink: 0;
+		color: var(--data-swell);
+	}
+
+	&__wave-height {
+		@include text-setting("base");
+
+		font-weight: $font-weight-extra-bold;
+		color: #fff;
+		letter-spacing: -0.02em;
+	}
+
+	&__icon-box {
+		@include justify-align-flex(flex-start, flex-start);
+
+		flex-direction: column;
+		gap: rem(4px);
+	}
+
+	&__meta {
+		@include justify-align-flex(space-between, center);
+		@include text-setting("xs");
+
+		gap: rem(6px);
+		width: 100%;
+	}
+
+	&__metric {
+		@include vert-align-flex(center);
+
+		gap: rem(6px);
+		color: var(--content-secondary);
+	}
+
+	&__arrow-icon {
+		@include sizer(rem(14px));
+
+		flex-shrink: 0;
+		color: var(--data-swell);
+		transition: transform 200ms $cb-transition;
+	}
+
+	&__wind-icon {
+		@include sizer(rem(14px));
+
+		flex-shrink: 0;
+		margin-top: rem(6px);
+		margin-bottom: auto;
+		color: var(--data-wind);
+	}
+
+	&__sun-icon {
+		@include sizer(rem(14px));
+
+		flex-shrink: 0;
+		color: var(--data-temperature);
+	}
+
+	&__val-box {
+		@include justify-align-flex(flex-start, flex-start);
+
+		flex-direction: column;
+	}
+
+	&__val {
+		font-weight: $font-weight-bold;
+		color: var(--content-primary);
+	}
+
+	&__sub {
+		line-height: 0.8;
+		color: var(--content-muted);
+	}
+
+	&__temp {
+		font-weight: $font-weight-bold;
+		color: var(--content-secondary);
+	}
+
+	&__weather {
+		@include vert-align-flex(center);
+
+		gap: rem(4px);
+		font-weight: $font-weight-bold;
+		color: var(--content-secondary);
+	}
+
+	&__placeholder-text {
+		@include text-setting("xs");
+
+		font-style: italic;
+		color: var(--content-muted);
+	}
+
+	&--good {
+		border-color: rgba(16, 185, 129, 0.4);
+		box-shadow: 0 0 20px 2px rgba(16, 185, 129, 0.25);
+	}
+
+	&--no-data {
+		background: rgba(28, 25, 23, 45%);
+		border: 1px dashed var(--border-default);
+		opacity: 75%;
+	}
+
+	&--error {
+		min-height: rem(150px);
+	}
+
+	&--spot {
+		justify-content: space-between;
+		overflow: hidden;
+
+		.forecast-card__cover {
+			@include sizer(100%, rem(80px));
+			@include border-radius(rem(3px));
+
+			overflow: hidden;
+
+			img {
+				@include sizer(100%);
+
+				object-fit: cover;
+			}
+		}
+
+		.forecast-card__info {
+			@include justify-align-flex(flex-start, flex-start);
+
+			flex-direction: column;
+			gap: rem(2px);
+		}
+
+		.forecast-card__title {
+			@include text-setting("sm");
+
+			font-weight: $font-weight-bold;
+			color: var(--content-primary);
+		}
+
+		.forecast-card__location {
+			@include text-setting("xs");
+
+			color: var(--content-muted);
+		}
+	}
+
+	&__error {
+		@include justify-align-flex(center, center);
+		@include text-setting("xs");
+
+		min-height: rem(80px);
+		opacity: 60%;
+	}
+}

@@ -1,0 +1,18 @@
+<td class="surf-spot-cell">
+	<div class="forecast-card forecast-card--spot">
+		{% if spot.cover %}
+		<div class="forecast-card__cover">
+			<img src="{{ spot.cover }}" alt="{{ spot.name }}" />
+		</div>
+		{% endif %}
+		<div class="forecast-card__info">
+			<div class="forecast-card__title">{{ spot.name }}</div>
+			{% if spot.region %}
+			<div class="forecast-card__location">{{ spot.region }}</div>
+			{% endif %}
+		</div>
+	</div>
+</td>
+{% for day in days %}
+<td class="surf-day-cell">{% include "pages/overview/ui/card.html" %}</td>
+{% endfor %}

@@ -1,0 +1,103 @@
+<div class="surf-grid-container">
+	<table class="surf-table">
+		<thead>
+			<tr class="surf-table__header-row">
+				<th class="surf-th surf-th--spot">
+					<span class="surf-th__title">Spot</span>
+				</th>
+				{% for header in days_header %}
+				<th class="surf-th surf-th--day {% if header.is_today %}surf-th--today{% endif %}">
+					<span class="surf-th__day-name">{{ header.day_name }}</span>
+					<span class="surf-th__date">{{ header.date_str }}</span>
+				</th>
+				{% endfor %}
+			</tr>
+		</thead>
+		<tbody id="forecast-grid-body">
+			{% for spot in spots %}
+			<tr class="surf-row" data-spot-id="{{ spot.id }}" data-spot-name="{{ spot.name }}">
+				<td class="surf-spot-cell">
+					<div class="forecast-card forecast-card--spot">
+						{% if spot.cover %}
+						<div class="forecast-card__cover">
+							<img src="{{ spot.cover }}" alt="{{ spot.name }}" />
+						</div>
+						{% endif %}
+						<div class="forecast-card__info">
+							<div class="forecast-card__title">{{ spot.name }}</div>
+							{% if spot.location %}
+							<div class="forecast-card__location">{{ spot.location }}</div>
+							{% endif %}
+						</div>
+					</div>
+				</td>
+				{% for header in days_header %}
+				<td class="surf-day-cell">{% include "pages/overview/ui/card-skeleton.html" %}</td>
+				{% endfor %}
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+<script>
+	(() => {
+		const rows = Array.from(document.querySelectorAll(".surf-row[data-spot-id]"));
+
+		async function loadSpot(row) {
+			const spotId = row.dataset.spotId;
+
+			try {
+				const response = await fetch(`api/forecast/${encodeURIComponent(spotId)}`, {
+					method: "GET",
+					headers: {
+						Accept: "text/html",
+					},
+					cache: "no-store",
+				});
+
+				if (!response.ok) {
+					throw new Error(`Forecast request failed: ${response.status}`);
+				}
+
+				const html = await response.text();
+
+				row.innerHTML = html;
+				row.classList.add("surf-row--loaded");
+				row.classList.remove("surf-row--error");
+			} catch (error) {
+				console.error(`Failed to load forecast for spot ${spotId}:`, error);
+
+				showSpotError(row);
+			}
+		}
+
+		function showSpotError(row) {
+			const cells = row.querySelectorAll(".surf-day-cell");
+
+			cells.forEach((cell) => {
+				cell.innerHTML = `
+                <div class="forecast-card forecast-card--error">
+                    <div class="forecast-card__header">
+						{% set variant = "error" %}
+						{% set label = "ERROR" %}
+						{% include "components/badge.html" %}
+                    </div>
+                    <div class="forecast-card__error">
+                        Forecast unavailable
+                    </div>
+                </div>
+            `;
+			});
+
+			row.classList.add("surf-row--error");
+		}
+
+		async function loadAllSpots() {
+			for (const row of rows) {
+				await loadSpot(row);
+			}
+		}
+
+		loadAllSpots();
+	})();
+</script>

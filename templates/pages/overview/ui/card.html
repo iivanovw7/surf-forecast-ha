@@ -1,0 +1,100 @@
+<div class="forecast-card forecast-card--active{% if day.rating_class == 'good' %} forecast-card--good{% endif %}">
+	<div class="forecast-card__header">
+		{% set variant = day.rating_class %} {% set label = day.rating %} {% include "components/badge.html" %}
+	</div>
+	<div class="forecast-card__wave">
+		<svg
+			class="forecast-card__wave-icon"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			stroke-width="2.5"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+		>
+			<path d="M2 12c1.5-3 3-5 5-5s3.5 2 5 5 3.5 5 5 5 3.5-2 5-5" />
+			<path d="M2 17c1.5-2 3-3.5 5-3.5s3.5 1.5 5 3.5 3.5 3.5 5 3.5 3.5-1.5 5-3.5" />
+		</svg>
+		<span class="forecast-card__wave-height">{{ day.wave_height_m }}</span>
+	</div>
+	<div class="forecast-card__meta">
+		<div class="forecast-card__metric">
+			<svg
+				class="forecast-card__arrow-icon"
+				style="transform: rotate(-{{ day.swell_deg }}deg)"
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2.5"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+			>
+				<line x1="12" y1="19" x2="12" y2="5"></line>
+				<polyline points="5 12 12 5 19 12"></polyline>
+			</svg>
+			<span class="forecast-card__val">{{ day.swell_direction }}</span>
+			<span class="forecast-card__sub">{{ day.swell_period }}</span>
+		</div>
+		<div class="forecast-card__temp">
+			<span>{{ day.water_temp }}</span>
+		</div>
+	</div>
+	<div class="forecast-card__meta">
+		<div class="forecast-card__metric">
+			<div class="forecast-card__icon-box">
+				<svg
+					class="forecast-card__wind-icon"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<path
+						d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"
+					></path>
+				</svg>
+				<svg
+					class="forecast-card__arrow-icon"
+					style="transform: rotate(-{{ day.wind_deg }}deg)"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2.5"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<line x1="12" y1="19" x2="12" y2="5"></line>
+					<polyline points="5 12 12 5 19 12"></polyline>
+				</svg>
+			</div>
+			<div class="forecast-card__val-box">
+				<span class="forecast-card__val">{{ day.wind_speed }}</span>
+				<span class="forecast-card__sub">{{ day.wind_gust }} kph gust</span>
+			</div>
+		</div>
+		<div class="forecast-card__weather">
+			<svg
+				class="forecast-card__sun-icon"
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+			>
+				<circle cx="12" cy="12" r="4"></circle>
+				<path d="M12 2v2"></path>
+				<path d="M12 20v2"></path>
+				<path d="m4.93 4.93 1.41 1.41"></path>
+				<path d="m17.66 17.66 1.41 1.41"></path>
+				<path d="M2 12h2"></path>
+				<path d="M20 12h2"></path>
+				<path d="m6.34 17.66-1.41 1.41"></path>
+				<path d="m19.07 4.93-1.41 1.41"></path>
+			</svg>
+			<span>{{ day.air_temp }}</span>
+		</div>
+	</div>
+</div>

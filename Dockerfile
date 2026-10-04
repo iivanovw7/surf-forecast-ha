@@ -37,6 +37,8 @@ WORKDIR /app
 
 COPY --from=builder /tmp/surf-forecast-ha /app/surf-forecast-ha
 COPY --from=builder /usr/src/app/templates /app/templates
+COPY assets /app/assets
+COPY config.yaml /app/config.yaml
 
 RUN chmod +x /app/surf-forecast-ha
 

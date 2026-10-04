@@ -1,0 +1,68 @@
+@charset "UTF-8";
+
+@use "sass:map";
+@use "sass:list";
+@use "sass:string";
+@use "sass:meta";
+
+@mixin only($params...) {
+	@if list.length($params) == 0 {
+		@error "Please pass an argument. The argument must be either a negative or positive number or list of numbers. Or pass one of the following predefined string values: 'first', 'last', 'odd', 'even'.";
+	} @else if list.length($params) == 1 {
+		$value: list.nth($params, 1);
+
+		@if meta.type-of($value) == "number" {
+			@if $value < 0 {
+				&:nth-last-of-type(#{$value * -1}) {
+					@content;
+				}
+			} @else {
+				&:nth-of-type(#{$value}) {
+					@content;
+				}
+			}
+		} @else if meta.type-of($value) == "string" {
+			@if $value == "odd" {
+				&:nth-of-type(odd) {
+					@content;
+				}
+			} @else if $value == "even" {
+				&:nth-of-type(even) {
+					@content;
+				}
+			} @else if $value == "first" {
+				&:first-of-type {
+					@content;
+				}
+			} @else if $value == "last" {
+				&:last-of-type {
+					@content;
+				}
+			} @else {
+				// For class, id or attribute selectors.
+				&#{$value} {
+					@content;
+				}
+			}
+		}
+	} @else if list.length($params) > 1 {
+		$selectors: ();
+
+		@for $i from 1 through list.length($params) {
+			$value: list.nth($params, $i);
+			$selector: null;
+
+			@if $value < 0 {
+				$selector: string.unquote("&:nth-last-of-type(#{ $value * -1 })");
+			} @else {
+				$selector: string.unquote("&:nth-of-type(#{ $value })");
+			}
+
+			$selectors: list.append($selectors, $selector, $separator: comma);
+		}
+
+		#{$selectors} {
+			@content;
+		}
+	}
+}

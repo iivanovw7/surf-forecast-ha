@@ -7,6 +7,7 @@ mod server;
 
 pub mod handlers;
 pub mod types;
+pub mod utils;
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {

@@ -1,0 +1,20 @@
+/* stylelint-disable at-rule-empty-line-before */
+@charset "UTF-8";
+
+@use "sass:map";
+@use "sass:list";
+@use "sizer" as *;
+@use "position" as *;
+@use "variables" as *;
+@use "z-index" as *;
+
+@mixin vert-align-flex($align: center) {
+	display: flex;
+	align-items: $align;
+}
+
+@mixin justify-align-flex($justify: center, $align: center) {
+	display: flex;
+	align-items: $align;
+	justify-content: $justify;
+}

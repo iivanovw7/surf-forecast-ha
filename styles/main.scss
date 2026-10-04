@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+/* stylelint-disable scss/load-no-partial-leading-underscore */
+
+/* ============ Vendors =========== */
+
+@use "@styles/vendors";
+
+/* ============ Themes ============ */
+
+@use "@styles/themes";
+
+/* ============ Global ============ */
+
+@use "@styles/global";
+
+/* ============ Layouts ============= */
+
+@use "@templates/layouts";
+
+/* ============ Pages ============= */
+
+@use "@templates/pages";
+
+/* ============ Components ============= */
+
+@use "@templates/components";
