@@ -19,7 +19,9 @@ pub async fn server() -> anyhow::Result<()> {
         .with(fmt::layer())
         .init();
 
-    tera.load_from_glob("templates/**/*.html")?;
+    let app_root = crate::utils::context::get_app_root();
+    let templates_pattern = app_root.join("templates/**/*.html").to_string_lossy().to_string();
+    tera.load_from_glob(&templates_pattern)?;
 
     tracing::info!("initializing state");
 
@@ -30,8 +32,7 @@ pub async fn server() -> anyhow::Result<()> {
 
     tracing::info!("initializing router");
 
-    let current_dir = std::env::current_dir()?;
-    let assets_path = current_dir.join("assets");
+    let assets_path = app_root.join("assets");
     let assets_serve = ServeDir::new(assets_path);
 
     let router = Router::new()

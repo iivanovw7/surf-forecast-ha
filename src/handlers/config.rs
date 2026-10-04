@@ -2,7 +2,9 @@ use axum::Json;
 use std::path::Path;
 use tokio::fs;
 
-use crate::types::config::{AddonOptions, Config, CONFIG_PATH, OPTIONS_PATH};
+use crate::types::config::{AddonOptions, OPTIONS_PATH};
+#[cfg(debug_assertions)]
+use crate::types::config::{Config, CONFIG_PATH};
 
 pub async fn load_options() -> AddonOptions {
     if Path::new(OPTIONS_PATH).exists() {
@@ -21,16 +23,24 @@ pub async fn load_options() -> AddonOptions {
 
     #[cfg(debug_assertions)]
     {
-        if Path::new(CONFIG_PATH).exists() {
-            match fs::read_to_string(CONFIG_PATH).await {
+        let app_root = crate::utils::context::get_app_root();
+        let config_path_buf = app_root.join(CONFIG_PATH);
+        let path_to_check = if Path::new(CONFIG_PATH).exists() {
+            std::path::PathBuf::from(CONFIG_PATH)
+        } else {
+            config_path_buf
+        };
+
+        if path_to_check.exists() {
+            match fs::read_to_string(&path_to_check).await {
                 Ok(data) => match serde_yaml::from_str::<Config>(&data) {
                     Ok(config_yaml) => return config_yaml.options,
                     Err(err) => {
-                        tracing::error!("Failed to parse yaml at {}: {}", CONFIG_PATH, err);
+                        tracing::error!("Failed to parse yaml at {:?}: {}", path_to_check, err);
                     }
                 },
                 Err(err) => {
-                    tracing::error!("Failed to read config file at {}: {}", CONFIG_PATH, err);
+                    tracing::error!("Failed to read config file at {:?}: {}", path_to_check, err);
                 }
             }
         }
