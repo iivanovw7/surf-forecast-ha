@@ -1,22 +1,20 @@
 <div class="surf-grid-container">
-	<table class="surf-table">
-		<thead>
-			<tr class="surf-table__header-row">
-				<th class="surf-th surf-th--spot">
-					<span class="surf-th__title">Spot</span>
-				</th>
-				{% for header in days_header %}
-				<th class="surf-th surf-th--day {% if header.is_today %}surf-th--today{% endif %}">
-					<span class="surf-th__day-name">{{ header.day_name }}</span>
-					<span class="surf-th__date">{{ header.date_str }}</span>
-				</th>
-				{% endfor %}
-			</tr>
-		</thead>
-		<tbody id="forecast-grid-body">
+	<div class="surf-grid">
+		<div class="surf-grid__header-row">
+			<div class="surf-th surf-th--spot">
+				<span class="surf-th__title">Spot</span>
+			</div>
+			{% for header in days_header %}
+			<div class="surf-th surf-th--day {% if header.is_today %}surf-th--today{% endif %}">
+				<span class="surf-th__day-name">{{ header.day_name }}</span>
+				<span class="surf-th__date">{{ header.date_str }}</span>
+			</div>
+			{% endfor %}
+		</div>
+		<div id="forecast-grid-body" class="surf-grid__body">
 			{% for spot in spots %}
-			<tr class="surf-row" data-spot-id="{{ spot.id }}" data-spot-name="{{ spot.name }}">
-				<td class="surf-spot-cell">
+			<div class="surf-row" data-spot-id="{{ spot.id }}" data-spot-name="{{ spot.name }}">
+				<div class="surf-spot-cell">
 					<div class="forecast-card forecast-card--spot">
 						{% if spot.cover %}
 						<div class="forecast-card__cover">
@@ -30,14 +28,14 @@
 							{% endif %}
 						</div>
 					</div>
-				</td>
+				</div>
 				{% for header in days_header %}
-				<td class="surf-day-cell">{% include "pages/overview/ui/card-skeleton.html" %}</td>
+				<div class="surf-day-cell">{% include "pages/overview/ui/card-skeleton.html" %}</div>
 				{% endfor %}
-			</tr>
+			</div>
 			{% endfor %}
-		</tbody>
-	</table>
+		</div>
+	</div>
 </div>
 <script>
 	(() => {

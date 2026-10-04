@@ -8,25 +8,32 @@
 	overflow: auto;
 }
 
-.surf-table {
+.surf-grid {
+	@include p(0, 2, 2);
+
+	display: grid;
+	grid-template-columns: rem(160px) repeat(7, rem(160px));
+	gap: rem(8px);
 	width: max-content;
-	border-spacing: rem(8px) rem(8px);
-	border-collapse: separate;
+}
 
-	thead {
-		position: sticky;
-		top: 0;
-		z-index: 20;
-		background: var(--surface-sunken);
-	}
+.surf-grid__header-row {
+	position: sticky;
+	top: 0;
+	z-index: 20;
+	display: grid;
+	grid-template-columns: rem(160px) repeat(7, rem(160px));
+	grid-column: 1 / -1;
+	gap: rem(8px);
+	background: var(--surface-sunken);
+}
 
-	&__header-row {
-		text-align: left;
-	}
+.surf-grid__body {
+	display: contents;
 }
 
 .surf-th {
-	@include p(1);
+	@include p(2, 0);
 
 	font-weight: $font-weight-bold;
 	color: var(--content-primary);
@@ -35,15 +42,18 @@
 
 	&--spot {
 		position: sticky;
+		top: 0;
 		left: 0;
 		z-index: 30;
-		min-width: rem(200px);
+		min-width: rem(160px);
 		text-align: start;
+		background: var(--surface-sunken);
 	}
 
 	&--day {
-		min-width: rem(200px);
+		min-width: rem(160px);
 		text-align: start;
+		background: var(--surface-sunken);
 	}
 
 	&__day-name {
@@ -68,19 +78,19 @@
 }
 
 .surf-row {
-	vertical-align: top;
+	display: contents;
 }
 
 .surf-spot-cell {
 	position: sticky;
 	left: 0;
 	z-index: 10;
-	min-width: rem(200px);
+	min-width: rem(160px);
 	padding: 0;
 	background: var(--surface-sunken);
 }
 
 .surf-day-cell {
-	min-width: rem(200px);
+	min-width: rem(160px);
 	padding: 0;
 }

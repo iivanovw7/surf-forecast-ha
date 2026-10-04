@@ -1,4 +1,4 @@
-<td class="surf-spot-cell">
+<div class="surf-spot-cell">
 	<div class="forecast-card forecast-card--spot">
 		{% if spot.cover %}
 		<div class="forecast-card__cover">
@@ -12,7 +12,7 @@
 			{% endif %}
 		</div>
 	</div>
-</td>
+</div>
 {% for day in days %}
-<td class="surf-day-cell">{% include "pages/overview/ui/card.html" %}</td>
+<div class="surf-day-cell">{% include "pages/overview/ui/card.html" %}</div>
 {% endfor %}

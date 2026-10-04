@@ -21,10 +21,10 @@ options:
     model: "meteofrance_wave"
     spots:
         - id: "sao_joao"
-          name: "São João da Caparica"
+          name: "São João"
           latitude: 38.6517
           longitude: -9.2431
-          cover: "assets/jpg/sao-joao.jpg"
+          cover: "https://semmais.pt/wp-content/uploads/2022/08/capa_14109.jpg"
           facing: 270.0
           swell:
               preferred_min: 220.0
@@ -32,12 +32,12 @@ options:
           wind:
               offshore_min: 60.0
               offshore_max: 120.0
-          region: "Costa da Caparica, PT"
+          region: "Costa de Caparica"
         - id: "fonte_da_telha"
           name: "Fonte da Telha"
           latitude: 38.5684
           longitude: -9.1947
-          cover: "assets/jpg/fonte.jpg"
+          cover: "https://t3.ftcdn.net/jpg/13/61/34/38/360_F_1361343819_3IQgQ38rNxAHOtNVlNJRXZnoXyL5AnvN.jpg"
           facing: 255.0
           swell:
               preferred_min: 220.0
@@ -50,9 +50,9 @@ options:
           name: "Carcavelos"
           latitude: 38.6792
           longitude: -9.3353
-          cover: "assets/jpg/carc.jpg"
+          cover: "https://images.winalist.com/cdn-cgi/image/format=auto%2Cquality=85%2Cfit=scale-down%2Cwidth=1500/blog/wp-content/uploads/2024/02/21121503/AdobeStock_635919891-1500x844.jpeg"
           facing: 150.0
-          region: "Carcavelos, PT"
+          region: "Carcavelos"
           swell:
               preferred_min: 200.0
               preferred_max: 290.0
@@ -63,9 +63,9 @@ options:
           name: "São Pedro do Estoril"
           latitude: 38.6946
           longitude: -9.3705
-          cover: "assets/jpg/sao-pedro.jpg"
+          cover: "https://i.ytimg.com/vi/ZxdMqyrMwO0/maxresdefault.jpg"
           facing: 165.0
-          region: "Estoril, PT"
+          region: "Estoril"
           swell:
               preferred_min: 200.0
               preferred_max: 280.0
@@ -76,9 +76,9 @@ options:
           name: "Guincho"
           latitude: 38.7327
           longitude: -9.4731
-          cover: "assets/jpg/guincho.jpg"
+          cover: "https://static-cms.routard.com/web-routard/uploads/xlarge_cascais-guincho-beach.1475511_b748bdf515.jpg"
           facing: 280.0
-          region: "Sintra-Cascais, PT"
+          region: "Sintra-Cascais"
           swell:
               preferred_min: 210.0
               preferred_max: 340.0

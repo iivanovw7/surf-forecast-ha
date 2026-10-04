@@ -20,7 +20,12 @@ pub async fn server() -> anyhow::Result<()> {
         .init();
 
     let app_root = crate::utils::context::get_app_root();
-    let templates_pattern = app_root.join("templates/**/*.html").to_string_lossy().to_string();
+
+    let templates_pattern = app_root
+        .join("templates/**/*.html")
+        .to_string_lossy()
+        .to_string();
+
     tera.load_from_glob(&templates_pattern)?;
 
     tracing::info!("initializing state");
