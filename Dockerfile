@@ -6,15 +6,26 @@ WORKDIR /usr/src/app
 
 RUN apk add --no-cache \
     musl-dev \
-    build-base
+    build-base \
+    nodejs \
+    npm
+
+RUN npm install -g pnpm
 
 RUN rustup target add \
     x86_64-unknown-linux-musl \
     aarch64-unknown-linux-musl
 
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+COPY rspack.config.mjs ./
+COPY styles ./styles
+COPY templates ./templates
+
+RUN pnpm install --frozen-lockfile
+RUN pnpm build:css
+
 COPY Cargo.toml Cargo.lock ./
 COPY src ./src
-COPY templates ./templates
 
 ARG TARGETARCH
 
@@ -37,7 +48,7 @@ WORKDIR /app
 
 COPY --from=builder /tmp/surf-forecast-ha /app/surf-forecast-ha
 COPY --from=builder /usr/src/app/templates /app/templates
-COPY assets /app/assets
+COPY --from=builder /usr/src/app/assets /app/assets
 COPY config.yaml /app/config.yaml
 
 RUN chmod +x /app/surf-forecast-ha

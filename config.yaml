@@ -99,9 +99,10 @@ schema:
           longitude: float(-180.0,180.0)
           cover: str
           facing: float
-          swell:
-              preferred_min: float
-              preferred_max: float
-          wind:
-              offshore_min: float
-              offshore_max: float
+          beach:
+              swell:
+                  preferred_min: float
+                  preferred_max: float
+              wind:
+                  offshore_min: float
+                  offshore_max: float
