@@ -514,6 +514,14 @@ $theme-variants: (
 	),
 );
 
+$default-theme: map.get($theme-variants, dark);
+
+html {
+	@each $key, $value in $default-theme {
+		--#{$key}: #{$value};
+	}
+}
+
 @each $name, $theme in $theme-variants {
 	html[data-theme="#{$name}"] {
 		@each $key, $value in $theme {
