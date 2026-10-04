@@ -26,13 +26,12 @@ options:
           longitude: -9.2431
           cover: "assets/jpg/sao-joao.jpg"
           facing: 270.0
-          beach:
-              swell:
-                  preferred_min: 220.0
-                  preferred_max: 330.0
-              wind:
-                  offshore_min: 60.0
-                  offshore_max: 120.0
+          swell:
+              preferred_min: 220.0
+              preferred_max: 330.0
+          wind:
+              offshore_min: 60.0
+              offshore_max: 120.0
           region: "Costa da Caparica, PT"
         - id: "fonte_da_telha"
           name: "Fonte da Telha"
@@ -40,13 +39,12 @@ options:
           longitude: -9.1947
           cover: "assets/jpg/fonte.jpg"
           facing: 255.0
-          beach:
-              swell:
-                  preferred_min: 220.0
-                  preferred_max: 330.0
-              wind:
-                  offshore_min: 50.0
-                  offshore_max: 110.0
+          swell:
+              preferred_min: 220.0
+              preferred_max: 330.0
+          wind:
+              offshore_min: 50.0
+              offshore_max: 110.0
           region: "Almada, PT"
         - id: "carcavelos"
           name: "Carcavelos"
@@ -55,13 +53,12 @@ options:
           cover: "assets/jpg/carc.jpg"
           facing: 150.0
           region: "Carcavelos, PT"
-          beach:
-              swell:
-                  preferred_min: 200.0
-                  preferred_max: 290.0
-              wind:
-                  offshore_min: 330.0
-                  offshore_max: 40.0
+          swell:
+              preferred_min: 200.0
+              preferred_max: 290.0
+          wind:
+              offshore_min: 330.0
+              offshore_max: 40.0
         - id: "sao_pedro"
           name: "São Pedro do Estoril"
           latitude: 38.6946
@@ -69,13 +66,12 @@ options:
           cover: "assets/jpg/sao-pedro.jpg"
           facing: 165.0
           region: "Estoril, PT"
-          beach:
-              swell:
-                  preferred_min: 200.0
-                  preferred_max: 280.0
-              wind:
-                  offshore_min: 330.0
-                  offshore_max: 30.0
+          swell:
+              preferred_min: 200.0
+              preferred_max: 280.0
+          wind:
+              offshore_min: 330.0
+              offshore_max: 30.0
         - id: "guincho"
           name: "Guincho"
           latitude: 38.7327
@@ -83,13 +79,12 @@ options:
           cover: "assets/jpg/guincho.jpg"
           facing: 280.0
           region: "Sintra-Cascais, PT"
-          beach:
-              swell:
-                  preferred_min: 210.0
-                  preferred_max: 340.0
-              wind:
-                  offshore_min: 70.0
-                  offshore_max: 130.0
+          swell:
+              preferred_min: 210.0
+              preferred_max: 340.0
+          wind:
+              offshore_min: 70.0
+              offshore_max: 130.0
 schema:
     model: list(ecmwf_wam|ewam|meteofrance_wave)
     spots:
@@ -99,10 +94,9 @@ schema:
           longitude: float(-180.0,180.0)
           cover: str
           facing: float
-          beach:
-              swell:
-                  preferred_min: float
-                  preferred_max: float
-              wind:
-                  offshore_min: float
-                  offshore_max: float
+          swell:
+              preferred_min: float
+              preferred_max: float
+          wind:
+              offshore_min: float
+              offshore_max: float
