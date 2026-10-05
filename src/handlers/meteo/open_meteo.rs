@@ -16,7 +16,7 @@ pub async fn get_meteo_data(latitude: f64, longitude: f64) -> Result<MarineForec
         sea_surface_temperature,\
         ocean_current_velocity,ocean_current_direction,\
         sea_level_height_msl\
-        &models=ecmwf_wam,ewam,meteofrance_wave\
+        &models=ecmwf_wam,ewam,meteofrance_wave,meteofrance_currents\
         &cell_selection=sea\
         &forecast_days=7"
     );

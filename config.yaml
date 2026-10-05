@@ -20,32 +20,6 @@ options:
     title: "Surf spots configuration"
     model: "meteofrance_wave"
     spots:
-        - id: "sao_joao"
-          name: "São João"
-          latitude: 38.6517
-          longitude: -9.2431
-          cover: "https://semmais.pt/wp-content/uploads/2022/08/capa_14109.jpg"
-          facing: 270.0
-          swell:
-              preferred_min: 220.0
-              preferred_max: 330.0
-          wind:
-              offshore_min: 60.0
-              offshore_max: 120.0
-          region: "Costa de Caparica"
-        - id: "fonte_da_telha"
-          name: "Fonte da Telha"
-          latitude: 38.5684
-          longitude: -9.1947
-          cover: "https://t3.ftcdn.net/jpg/13/61/34/38/360_F_1361343819_3IQgQ38rNxAHOtNVlNJRXZnoXyL5AnvN.jpg"
-          facing: 255.0
-          swell:
-              preferred_min: 220.0
-              preferred_max: 330.0
-          wind:
-              offshore_min: 50.0
-              offshore_max: 110.0
-          region: "Almada, PT"
         - id: "carcavelos"
           name: "Carcavelos"
           latitude: 38.6792
@@ -72,6 +46,32 @@ options:
           wind:
               offshore_min: 330.0
               offshore_max: 30.0
+        - id: "fonte_da_telha"
+          name: "Fonte da Telha"
+          latitude: 38.5684
+          longitude: -9.1947
+          cover: "https://t3.ftcdn.net/jpg/13/61/34/38/360_F_1361343819_3IQgQ38rNxAHOtNVlNJRXZnoXyL5AnvN.jpg"
+          facing: 255.0
+          swell:
+              preferred_min: 220.0
+              preferred_max: 330.0
+          wind:
+              offshore_min: 50.0
+              offshore_max: 110.0
+          region: "Almada, PT"
+        - id: "sao_joao"
+          name: "São João"
+          latitude: 38.6517
+          longitude: -9.2431
+          cover: "https://semmais.pt/wp-content/uploads/2022/08/capa_14109.jpg"
+          facing: 270.0
+          swell:
+              preferred_min: 220.0
+              preferred_max: 330.0
+          wind:
+              offshore_min: 60.0
+              offshore_max: 120.0
+          region: "Costa de Caparica"
         - id: "guincho"
           name: "Guincho"
           latitude: 38.7327

@@ -4,7 +4,7 @@
 	@include p(2);
 	@include border-radius(4);
 	@include justify-align-flex(flex-start, flex-start);
-	@include sizer(rem(160px), rem(140px));
+	@include sizer($forecast-card-width, $forecast-card-height);
 
 	flex-direction: column;
 	background: var(--surface-secondary);

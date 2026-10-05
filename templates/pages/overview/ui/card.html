@@ -32,11 +32,9 @@
 				<line x1="12" y1="19" x2="12" y2="5"></line>
 				<polyline points="5 12 12 5 19 12"></polyline>
 			</svg>
-			<span class="forecast-card__val">{{ day.swell_direction }}</span>
-			<span class="forecast-card__sub">{{ day.swell_period }}</span>
-		</div>
-		<div class="forecast-card__temp">
-			<span>{{ day.water_temp }}</span>
+			<span class="forecast-card__val">{{ day.swell_deg | round | int }}°</span>
+			<span class="forecast-card__sub">{{ day.swell_direction }}</span>
+			<span class="forecast-card__val">{{ day.swell_period }}</span>
 		</div>
 	</div>
 	<div class="forecast-card__meta">

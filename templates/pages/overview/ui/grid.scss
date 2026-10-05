@@ -12,7 +12,7 @@
 	@include p(0, 2, 2);
 
 	display: grid;
-	grid-template-columns: rem(160px) repeat(7, rem(160px));
+	grid-template-columns: $forecast-card-height repeat(7, $forecast-card-width);
 	gap: rem(8px);
 	width: max-content;
 }
@@ -22,7 +22,7 @@
 	top: 0;
 	z-index: 20;
 	display: grid;
-	grid-template-columns: rem(160px) repeat(7, rem(160px));
+	grid-template-columns: $forecast-card-height repeat(7, $forecast-card-width);
 	grid-column: 1 / -1;
 	gap: rem(8px);
 	background: var(--surface-sunken);
@@ -45,13 +45,13 @@
 		top: 0;
 		left: 0;
 		z-index: 30;
-		min-width: rem(160px);
+		min-width: $forecast-card-width;
 		text-align: start;
 		background: var(--surface-sunken);
 	}
 
 	&--day {
-		min-width: rem(160px);
+		min-width: $forecast-card-width;
 		text-align: start;
 		background: var(--surface-sunken);
 	}
@@ -85,12 +85,12 @@
 	position: sticky;
 	left: 0;
 	z-index: 10;
-	min-width: rem(160px);
+	min-width: $forecast-card-width;
 	padding: 0;
 	background: var(--surface-sunken);
 }
 
 .surf-day-cell {
-	min-width: rem(160px);
+	min-width: $forecast-card-width;
 	padding: 0;
 }
